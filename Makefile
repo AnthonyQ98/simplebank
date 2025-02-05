@@ -43,4 +43,8 @@ db:
 	@echo "Database reset complete."
 
 
+sqlc:
+	sqlc generate
+
+
 .PHONY: createdb dropdb postgres migrateup migratedown migrateforce db
