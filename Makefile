@@ -42,7 +42,6 @@ db:
 
 	@echo "Database reset complete."
 
-
 sqlc:
 	sqlc generate
 
@@ -53,7 +52,6 @@ server:
 	go run main.go
 
 mock:
-    mockgen -package mockdb -destination db/mock/Store.go github.com/anthonyq98/simplebank/db/sqlc Store
+	mockgen -package mockdb -destination db/mock/Store.go github.com/anthonyq98/simplebank/db/sqlc Store
 
-
-.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock
+.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc
