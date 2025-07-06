@@ -1,14 +1,15 @@
 # Build stage
 FROM golang:1.24.3-alpine AS builder
 WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download && go mod verify
 COPY . .
-RUN go build -o simplebank main.go
+RUN go build -o main main.go
 
 # Production stage
 FROM alpine:latest
-COPY --from=builder /app/simplebank /usr/local/bin/
+WORKDIR /app
+COPY --from=builder /app/main .
+COPY app.env .
+
 EXPOSE 8080
 
-CMD ["simplebank"]
+CMD ["/app/main"]
