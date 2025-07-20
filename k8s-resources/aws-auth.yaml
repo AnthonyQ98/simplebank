@@ -1,0 +1,16 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: aws-auth 
+  namespace: kube-system 
+data: 
+  mapRoles: | 
+    - groups:
+      - eks-console-dashboard-full-access-group
+      rolearn: arn:aws:iam::331038362896:role/github-ci
+      username: system:masters
+  mapUsers: | 
+    - userarn: arn:aws:iam::331038362896:user/github-ci
+      username: github-ci
+      groups:
+        - system:masters
