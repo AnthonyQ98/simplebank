@@ -12,3 +12,4 @@ terraform/*.tfvars
 terraform/*.terraform/ 
 terraform/*.lock.hcl
 *.tfstate
+*.log
