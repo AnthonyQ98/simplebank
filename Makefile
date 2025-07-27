@@ -25,6 +25,9 @@ migratedown1:
 migrateforce: 
 	migrate -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -path db/migration force 0
 
+migratenew:
+	migrate create -ext sql -dir db/migration -seq $(name)
+
 DB_CONTAINER=postgres12
 DB_IMAGE=postgres:12-alpine
 DB_NAME=simple_bank
@@ -63,4 +66,12 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/Store.go github.com/anthonyq98/simplebank/db/sqlc Store
 
-.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 
+up:
+	docker compose up
+
+down:
+	docker compose down
+	docker rmi postgres:12-alpine
+	docker rmi simplebank-api
+
+.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 up down
