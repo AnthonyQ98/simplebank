@@ -82,4 +82,11 @@ down:
 	docker rmi postgres:12-alpine
 	docker rmi simplebank-api
 
-.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 up down dbdocs dbschema
+proto:
+	rm -f pb/*.go
+	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative --go-grpc_out=pb --go-grpc_opt=paths=source_relative proto/*.proto
+
+evans:
+	evans --host localhost --port 9090 -r repl 
+
+.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 up down dbdocs dbschema proto evans
