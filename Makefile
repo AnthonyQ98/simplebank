@@ -66,7 +66,7 @@ sqlc:
 	sqlc generate
 
 test: 
-	go test -v -cover ./...
+	go test -v -cover -short ./...
 
 server:
 	go run main.go
@@ -94,4 +94,4 @@ evans:
 redis: 
 	docker run --name redis -p 6379:6379 -d redis:8-alpine
 
-.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 up down dbdocs dbschema proto evans redis
+.PHONY: createdb dropdb postgres migrateup migratedown migrateforce db server mock test sqlc migratedown1 migrateup1 up down dbdocs dbschema proto evans redis migratenew

@@ -13,3 +13,8 @@ terraform/*.terraform/
 terraform/*.lock.hcl
 *.tfstate
 *.log
+
+# Environment variables and sensitive files
+app.env
+.env
+*.env
