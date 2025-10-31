@@ -43,6 +43,15 @@ jobs:
         sudo mv migrate /usr/bin
         which migrate
 
+    - name: Set environment variables
+      run: |
+        echo "DB_DRIVER=postgres" >> $GITHUB_ENV
+        echo "DB_SOURCE=postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" >> $GITHUB_ENV
+        echo "MIGRATION_URL=file://db/migration" >> $GITHUB_ENV
+        echo "TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012" >> $GITHUB_ENV
+        echo "ACCESS_TOKEN_DURATION=15m" >> $GITHUB_ENV
+        echo "REFRESH_TOKEN_DURATION=24h" >> $GITHUB_ENV
+
     - name: Run migrations
       run: make migrateup
 

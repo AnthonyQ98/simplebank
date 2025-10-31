@@ -29,11 +29,9 @@ func LoadConfig(path string) (config Config, err error) {
 
 	viper.AutomaticEnv()
 
-	err = viper.ReadInConfig()
-
-	if err != nil {
-		return
-	}
+	// Try to read config file, but don't fail if it doesn't exist
+	// This allows the function to work with environment variables only
+	_ = viper.ReadInConfig()
 
 	err = viper.Unmarshal(&config)
 	return
