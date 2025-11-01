@@ -73,6 +73,7 @@ server:
 
 mock:
 	mockgen -package mockdb -destination db/mock/Store.go github.com/anthonyq98/simplebank/db/sqlc Store
+	mockgen -package mockwk -destination worker/mock/distributor.go github.com/anthonyq98/simplebank/worker TaskDistributor
 
 up:
 	docker compose up
