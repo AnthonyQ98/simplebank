@@ -34,7 +34,6 @@ func LoadConfig(path string) (config Config, err error) {
 
 	// Bind each environment variable explicitly
 	viper.BindEnv("ENVIRONMENT")
-	viper.BindEnv("DB_DRIVER")
 	viper.BindEnv("DB_SOURCE")
 	viper.BindEnv("MIGRATION_URL")
 	viper.BindEnv("HTTP_SERVER_ADDRESS")
