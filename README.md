@@ -1,6 +1,6 @@
 # SimpleBank
 
-A robust banking system built with Go, featuring a secure and scalable backend API with a simple frontend interface. This project implements real-world banking operations including accounts, transfers, and authentication using modern development practices.
+A robust banking system built with Go, featuring a secure and scalable backend API. This project implements real-world banking operations including accounts, transfers, and authentication using modern development practices.
 
 ## ✨ Features
 
